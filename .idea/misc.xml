@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/micha/AndroidStudioProjects/NASAearthimagerydatabase/app/src/main/res/layout/activity_favourites.xml" value="0.20885416666666667" />
+        <entry key="..\:/Users/micha/AndroidStudioProjects/NASAearthimagerydatabase/app/src/main/res/layout/activity_image_result.xml" value="0.371875" />
         <entry key="..\:/Users/micha/AndroidStudioProjects/NASAearthimagerydatabase/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/micha/AndroidStudioProjects/NASAearthimagerydatabase/app/src/main/res/layout/image_result.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/micha/AndroidStudioProjects/NASAearthimagerydatabase/app/src/main/res/layout/list_favourites.xml" value="0.371875" />
       </map>
     </option>
   </component>
