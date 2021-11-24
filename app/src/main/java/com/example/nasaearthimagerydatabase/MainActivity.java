@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     /*
     This is the main activity, this activity contains:
-    Part 3. 1 edit text, 1 toast, 1 snackbar:
+    Part 3. 1 Edit text, 1 toast, 1 snackbar:
         This contains the edit text element of this part.
     Part 4. 4 Activites, navigation and toolbar:
         This is 1 of 4 activies in this app.
