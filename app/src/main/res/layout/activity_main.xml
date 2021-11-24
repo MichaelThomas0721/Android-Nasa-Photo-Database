@@ -8,110 +8,146 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="146dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/MainTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:fontFamily="sans-serif-black"
-            android:text="Nasa Image Search"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#FC3D21"
-            android:textSize="34sp"
-            android:typeface="normal" />
-    </LinearLayout>
-
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
-        <TextView
-            android:id="@+id/LonLabel"
-            android:layout_width="154dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-black"
-            android:text="Longitude:"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:typeface="normal" />
-
-        <EditText
-            android:id="@+id/LonInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Longitude"
-            android:inputType="numberDecimal"
-            android:minHeight="48dp"
-            android:textColor="#FFFFFF"
-            android:textColorHighlight="@color/teal_700"
-            android:textColorHint="#787373" />
-    </LinearLayout>
-
-    <LinearLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        tools:openDrawer="start">
 
-        <TextView
-            android:id="@+id/LatLabel"
-            android:layout_width="154dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-black"
-            android:text="Latitude:"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:typeface="normal" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/LatInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Latitude"
-            android:inputType="numberDecimal"
-            android:minHeight="48dp"
-            android:textColor="#FFFFFF"
-            android:textColorHighlight="@color/teal_700"
-            android:textColorHint="#787373" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="146dp"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/MainTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Nasa Image Search"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#FC3D21"
+                    android:textSize="34sp"
+                    android:typeface="normal" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/searchButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#FC3D21"
-            android:text="Search" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/LonLabel"
+                    android:layout_width="154dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Longitude:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:typeface="normal" />
 
-        <Button
-            android:id="@+id/favouritesButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#FC3D21"
-            android:text="Favourites" />
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/LonInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Longitude"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:minHeight="48dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="@color/teal_700"
+                    android:textColorHint="#787373" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/LatLabel"
+                    android:layout_width="154dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Latitude:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:typeface="normal" />
+
+                <EditText
+                    android:id="@+id/LatInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Latitude"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:minHeight="48dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="@color/teal_700"
+                    android:textColorHint="#787373" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/searchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FC3D21"
+                    android:text="Search" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/favouritesButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FC3D21"
+                    android:text="Favourites" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/helpButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FC3D21"
+                    android:text="Help" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </LinearLayout>

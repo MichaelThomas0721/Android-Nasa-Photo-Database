@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="330dp"
+        android:layout_height="192dp"
         android:orientation="horizontal">
 
         <ListView
@@ -20,16 +20,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
+        android:layout_height="45dp"
+        android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
+        <Button
+            android:id="@+id/favouriteHelpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Help" />
+    </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/fragmentLocation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 </LinearLayout>
