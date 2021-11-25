@@ -6,9 +6,9 @@
     <string name="Latitude">Latitude</string>
     <string name="Search">Chercher</string>
     <string name="VFavourites">Afficher les favoris</string>
-    <string name="NasaImageSearch">Recherche d'images de la Nasa</string>
+    <string name="NasaImageSearch">Recherche d\'images de la Nasa</string>
     <string name="SearchResult">Résultat de la recherche</string>
-    <string name="ImageName">Nom de l'image</string>
+    <string name="ImageName">Nom de l\'image</string>
     <string name="AddFavourite">Ajouter aux Favoris</string>
     <string name="Delete">Effacer</string>
     <string name="Name">Nom</string>
@@ -16,7 +16,7 @@
     <string name="AddedFavourites">Ajouté aux favoris !</string>
     <string name="Id">Id</string>
     <string name="Details">Des détails:</string>
-    <string name="NasaDatabase">Base de données d'imagerie terrestre de la NASA</string>
+    <string name="NasaDatabase">Base de données d\'imagerie terrestre de la NASA</string>
     <string name="CreatedBy">Créé par Michael Thomas</string>
 
     <string-array name="activites_names">
