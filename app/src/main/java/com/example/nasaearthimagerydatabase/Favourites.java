@@ -3,6 +3,7 @@ package com.example.nasaearthimagerydatabase;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Favourites extends AppCompatActivity {
+public class Favourites extends AppCompatActivity implements NavInterface{
 
     /*
     This activity is used to display the database of favourite images
@@ -42,6 +43,7 @@ public class Favourites extends AppCompatActivity {
     MyListAdapter myAdapter;
     DetailsFragment dFragment;
     Favourites favourites;
+    int activityId = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,17 +70,9 @@ public class Favourites extends AppCompatActivity {
             }
         });
 
-        //Alet button used to display how to use activity
-        Button helpButton = (Button) findViewById(R.id.favouriteHelpButton);
-        helpButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Favourites.this);
-                alertDialogBuilder.setTitle("How to use favourites page").setMessage("Select the image from the list to view image" +
-                        " and details, click the delete button to delete the selected image, click the android back button to return to the main page")
-                        .setNegativeButton("Ok", (click, arg) -> { } ).create().show();
-            }
-        });
+        Toolbar_Navigation tBarNav = new Toolbar_Navigation(this, this);
+        tBarNav.CreateToolBar();
+        tBarNav.CreateDrawer();
     }
 
     //Adapter for list
@@ -115,8 +109,9 @@ public class Favourites extends AppCompatActivity {
             TextView textName = newView.findViewById(R.id.fListName);
 
             //Set text for layout elements
-            textId.setText("Id: " + String.valueOf(images.get(position).imageId));
-            textName.setText("Name: " + images.get(position).imageName);
+            Resources res = getResources();
+            textId.setText(res.getText(R.string.Id) + ": " + String.valueOf(images.get(position).imageId));
+            textName.setText(res.getText(R.string.Name) + ": " + images.get(position).imageName);
 
             return newView;
         }
@@ -159,6 +154,14 @@ public class Favourites extends AppCompatActivity {
         db.delete(MyOpener.TABLE_NAME, MyOpener.imageId + " = ?", new String[] {Integer.toString(im.imageId)});
         images.remove(position);
         myAdapter.notifyDataSetChanged();
+    }
+
+    public void setActivityId(int activityId){
+        this.activityId = activityId;
+    }
+
+    public int getActivityId(){
+        return activityId;
     }
 
 }

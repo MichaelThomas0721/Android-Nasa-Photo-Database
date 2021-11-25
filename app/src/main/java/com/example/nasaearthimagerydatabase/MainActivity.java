@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements NavInterface{
 
 
     /*
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity{
 
     //Creating the final string for the shared preferences.
     public static final String SHARED_PREFS = "sharedPrefs";
+    int activityId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,6 @@ public class MainActivity extends AppCompatActivity{
         //Get button and inputs
         Button searchButton = (Button) findViewById(R.id.searchButton);
         Button favouritesButton = (Button) findViewById(R.id.favouritesButton);
-        Button helpButton = (Button) findViewById(R.id.helpButton);
         EditText lonInput = (EditText) findViewById(R.id.LonInput);
         EditText latInput = (EditText) findViewById(R.id.LatInput);
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        Toolbar_Navigation tBarNav = new Toolbar_Navigation(this, "Main");
+        Toolbar_Navigation tBarNav = new Toolbar_Navigation(this, this);
         tBarNav.CreateToolBar();
         tBarNav.CreateDrawer();
     }
@@ -103,6 +103,14 @@ public class MainActivity extends AppCompatActivity{
         edit.putString("lat", latText.getText().toString());
         //Apply the new fields
         edit.apply();
+    }
+
+    public void setActivityId(int activityId){
+        this.activityId = activityId;
+    }
+
+    public int getActivityId(){
+        return activityId;
     }
 
 }

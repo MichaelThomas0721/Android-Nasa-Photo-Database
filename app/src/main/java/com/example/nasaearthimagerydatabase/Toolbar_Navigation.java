@@ -1,6 +1,7 @@
 package com.example.nasaearthimagerydatabase;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,18 +23,36 @@ public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelect
     DrawerLayout drawer;
     AppCompatActivity activity;
     String name;
+    Resources res;
+    String[] help_bodies;
+    String[] activity_name;
+    String[] help_titles;
+    int activityId;
 
-    public Toolbar_Navigation(AppCompatActivity activity, String name){
+    public Toolbar_Navigation(AppCompatActivity activity, NavInterface activityIdSet){
         this.activity = activity;
         this.name = name;
+        activityId = activityIdSet.getActivityId();
+        res = activity.getResources();
+        help_bodies = res.getStringArray(R.array.help_bodies);
+        activity_name = res.getStringArray(R.array.activites_names);
+        help_titles = res.getStringArray(R.array.help_titles);
     }
 
     public void CreateToolBar(){
 
         //Get tool bar: IN PROGRESS//TO DO
         tBar = (Toolbar) activity.findViewById(R.id.toolbar);
-        activity.setSupportActionBar(tBar);
+        tBar.inflateMenu(R.menu.navigation_menu);
 
+        tBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+            MenuItemOptions(item);
+                return false;
+            }
+        });
     }
 
     public void CreateDrawer(){
@@ -97,9 +116,9 @@ public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelect
                 //Create alert builder to create alert
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
                 //Create alert, set the alert contents and show the alert.
-                alertDialogBuilder.setTitle("How to use home page").setMessage("Enter the longitude and latitude into the input boxes" +
-                        " then press the search button to display and image of that longitude and latitude, Or press the favourites button" +
-                        " to view favourited images").setNegativeButton("Ok", (click, arg) -> { } ).create().show();
+                alertDialogBuilder.setTitle(help_titles[0] + " " + activity_name[activityId] + " " +
+                        help_titles[1]).setMessage(help_bodies[activityId])
+                        .setNegativeButton("Ok", (click, arg) -> { } ).create().show();
                 break;
         }
     }

@@ -1,6 +1,7 @@
 package com.example.nasaearthimagerydatabase;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -99,7 +100,8 @@ public class DetailsFragment extends Fragment {
         //Set bitmap
         fragImage.setImageBitmap(image);
         //Set text fields
-        fragLon.setText("Longitude: " + longitude);
-        fragLat.setText("Latitude: " + latitude);
+        Resources res = getResources();
+        fragLon.setText(res.getText(R.string.Longitude) + ": " + longitude);
+        fragLat.setText(res.getText(R.string.Latitude) + ": " + latitude);
     }
 }

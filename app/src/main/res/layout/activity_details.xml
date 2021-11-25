@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Details:" />
+            android:text="@string/Details" />
     </LinearLayout>
 
     <LinearLayout
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nasa Earth Imagery Database" />
+            android:text="@string/NasaDatabase" />
     </LinearLayout>
 
     <LinearLayout
@@ -44,6 +44,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Created By Michael Thomas" />
+            android:text="@string/CreatedBy" />
     </LinearLayout>
 </LinearLayout>
