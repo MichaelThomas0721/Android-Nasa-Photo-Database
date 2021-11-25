@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:fontFamily="sans-serif-black"
-                    android:text="Nasa Image Search"
+                    android:text="@string/NasaImageSearch"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#FC3D21"
                     android:textSize="34sp"

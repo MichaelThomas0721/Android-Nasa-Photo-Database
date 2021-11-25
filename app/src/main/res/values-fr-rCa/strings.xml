@@ -22,7 +22,7 @@
     <string-array name="activites_names">
         <item>Principal</item>
         <item>Favoris</item>
-        <item>Résultat de l'image</item>
+        <item>Résultat de l\'image</item>
         <item>Des détails</item>
     </string-array>
     <string-array name="help_titles">
@@ -34,9 +34,9 @@
          puis appuyez sur le bouton de recherche pour afficher une image de cette longitude et latitude, ou appuyez sur
             le bouton favoris
          pour voir les images favorites</item>
-        <item>Sélectionnez l'image dans la liste pour afficher l'image et les détails, cliquez sur le bouton Supprimer pour
-            supprimez l'image sélectionnée, cliquez sur le bouton retour android pour revenir à la page principale</item>
-        <item>Entrez un nom dans la zone de saisie et sélectionnez le bouton favori pour ajouter l'image à
+        <item>Sélectionnez l\'image dans la liste pour afficher l\'image et les détails, cliquez sur le bouton Supprimer pour
+            supprimez l\'image sélectionnée, cliquez sur le bouton retour android pour revenir à la page principale</item>
+        <item>Entrez un nom dans la zone de saisie et sélectionnez le bouton favori pour ajouter l\'image à
             vos favoris, appuyez sur le bouton de retour Android pour revenir à la page principale</item>
     </string-array>
 </resources>
