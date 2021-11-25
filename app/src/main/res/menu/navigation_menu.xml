@@ -17,4 +17,10 @@
         android:title="Favourites"
         android:icon="@drawable/dino_3"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/helpItem"
+        android:title="Help"
+        android:icon="@drawable/light"
+        app:showAsAction="always"/>
 </menu>

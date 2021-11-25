@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
@@ -17,10 +18,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity{
 
 
     /*
@@ -81,28 +83,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        //Button to learn how to use activity
-        helpButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //Create alert builder to create alert
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-                //Create alert, set the alert contents and show the alert.
-                alertDialogBuilder.setTitle("How to use home page").setMessage("Enter the longitude and latitude into the input boxes" +
-                        " then press the search button to display and image of that longitude and latitude, Or press the favourites button" +
-                        " to view favourited images").setNegativeButton("Ok", (click, arg) -> { } ).create().show();
-            }
-        });
-
-        //Get tool bar: IN PROGRESS//TO DO
-        Toolbar tBar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(tBar);
-
-        //Get drawer: IN PROGRESS//TO DO
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, tBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        Toolbar_Navigation tBarNav = new Toolbar_Navigation(this, "Main");
+        tBarNav.CreateToolBar();
+        tBarNav.CreateDrawer();
     }
 
     //Save inputs to shared preferences when paused
@@ -122,56 +105,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         edit.apply();
     }
 
-    //IN PROGRESS: TO DO
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navigation_menu, menu);
-
-        return true;
-    }
-
-    //IN PROGRESS: TO DO
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId()){
-            case R.id.detailsItem:
-                        Intent detailsInt = new Intent(MainActivity.this, Details.class);
-                        startActivity(detailsInt);
-                break;
-            case R.id.mainItem:
-                Intent mainInt = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(mainInt);
-                break;
-            case R.id.favouriteItem:
-                Intent favouriteInt = new Intent(MainActivity.this, Favourites.class);
-                startActivity(favouriteInt);
-                break;
-        }
-
-        return true;
-    }
-
-    //IN PROGRESS: TO DO
-    @Override
-    public boolean onNavigationItemSelected( MenuItem item) {
-        switch(item.getItemId())
-        {
-            case R.id.detailsItem:
-                Intent detailsInt = new Intent(MainActivity.this, Details.class);
-                startActivity(detailsInt);
-                break;
-            case R.id.mainItem:
-                Intent mainInt = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(mainInt);
-                break;
-            case R.id.favouriteItem:
-                Intent favouriteInt = new Intent(MainActivity.this, Favourites.class);
-                startActivity(favouriteInt);
-                break;
-        }
-
-        return false;
-
-    }
 }
