@@ -22,7 +22,6 @@ public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelect
     Toolbar tBar;
     DrawerLayout drawer;
     AppCompatActivity activity;
-    String name;
     Resources res;
     String[] help_bodies;
     String[] activity_name;
@@ -31,7 +30,6 @@ public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelect
 
     public Toolbar_Navigation(AppCompatActivity activity, NavInterface activityIdSet){
         this.activity = activity;
-        this.name = name;
         activityId = activityIdSet.getActivityId();
         res = activity.getResources();
         help_bodies = res.getStringArray(R.array.help_bodies);
@@ -65,7 +63,7 @@ public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelect
         NavigationView navigationView = activity.findViewById(R.id.nav_view);
         View header = navigationView.getHeaderView(0);
         TextView navTitle = header.findViewById(R.id.header_drawertitle);
-        navTitle.setText(name + " Activity, Version 1.0");
+        navTitle.setText(activity_name[activityId] + " Activity, Version 1.0");
         navigationView.setNavigationItemSelectedListener(this);
     }
 

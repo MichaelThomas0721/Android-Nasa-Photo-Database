@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -76,7 +77,8 @@ public class ImageResult extends AppCompatActivity implements NavInterface{
         }
 
         //Create and show toast with the latitude and longitude of the search result
-        Toast toast = Toast.makeText(getApplicationContext(), R.string.ToastResult + " " + lon + ", " + lat, Toast.LENGTH_SHORT);
+        Resources res = getResources();
+        Toast toast = Toast.makeText(getApplicationContext(), res.getString(R.string.ToastResult) + " " + lon + ", " + lat + ", " + res.getString(R.string.Date), Toast.LENGTH_SHORT);
         toast.show();
 
         //Find button
