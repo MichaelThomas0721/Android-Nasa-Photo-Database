@@ -19,6 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelectedListener{
 
+    //Create variables
     Toolbar tBar;
     DrawerLayout drawer;
     AppCompatActivity activity;
@@ -28,6 +29,7 @@ public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelect
     String[] help_titles;
     int activityId;
 
+    //Constructor to set initial variables and get strings
     public Toolbar_Navigation(AppCompatActivity activity, NavInterface activityIdSet){
         this.activity = activity;
         activityId = activityIdSet.getActivityId();
@@ -39,35 +41,38 @@ public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelect
 
     public void CreateToolBar(){
 
-        //Get tool bar: IN PROGRESS//TO DO
+        //Get tool bar
         tBar = (Toolbar) activity.findViewById(R.id.toolbar);
         tBar.inflateMenu(R.menu.navigation_menu);
-
+        //Set menu listener
         tBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                //Call generalized class for selecting items
             MenuItemOptions(item);
                 return false;
             }
         });
     }
 
+    //Used to create the drawer
     public void CreateDrawer(){
+        //Get drawer
         drawer = activity.findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(activity,
                 drawer, tBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = activity.findViewById(R.id.nav_view);
+        //Set header
         View header = navigationView.getHeaderView(0);
         TextView navTitle = header.findViewById(R.id.header_drawertitle);
         navTitle.setText(activity_name[activityId] + " Activity, Version 1.0");
+        //Set listener
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    //IN PROGRESS: TO DO
+    //Used to create toolbar
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = activity.getMenuInflater();
         inflater.inflate(R.menu.navigation_menu, menu);
@@ -75,7 +80,7 @@ public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelect
         return true;
     }
 
-    //IN PROGRESS: TO DO
+    //Calls generalized class for selecting items
     public boolean onOptionsItemSelected(MenuItem item){
 
         MenuItemOptions(item);
@@ -83,7 +88,7 @@ public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelect
         return true;
     }
 
-    //IN PROGRESS: TO DO
+    //Calls generalized class for selecting items
     public boolean onNavigationItemSelected( MenuItem item) {
 
         MenuItemOptions(item);
@@ -95,7 +100,9 @@ public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelect
 
     }
 
+    //Generalized class for selecting items
     public void MenuItemOptions(MenuItem item){
+        //Switch case based on which item is selected
         switch(item.getItemId())
         {
             case R.id.detailsItem:

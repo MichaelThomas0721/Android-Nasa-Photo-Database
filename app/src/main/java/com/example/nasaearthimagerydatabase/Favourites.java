@@ -70,6 +70,7 @@ public class Favourites extends AppCompatActivity implements NavInterface{
             }
         });
 
+        //Create toolbar and nav drawer
         Toolbar_Navigation tBarNav = new Toolbar_Navigation(this, this);
         tBarNav.CreateToolBar();
         tBarNav.CreateDrawer();
@@ -156,6 +157,7 @@ public class Favourites extends AppCompatActivity implements NavInterface{
         myAdapter.notifyDataSetChanged();
     }
 
+    //Setter and getter for activityId
     public void setActivityId(int activityId){
         this.activityId = activityId;
     }

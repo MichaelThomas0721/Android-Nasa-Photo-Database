@@ -21,11 +21,14 @@ public class Details extends AppCompatActivity implements NavInterface{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+
+        //Create toolbar and nav drawer
         Toolbar_Navigation tBarNav = new Toolbar_Navigation(this, this);
         tBarNav.CreateToolBar();
         tBarNav.CreateDrawer();
     }
 
+    //Setter and getter for activityId
     @Override
     public void setActivityId(int activityId) {
         this.activityId = activityId;

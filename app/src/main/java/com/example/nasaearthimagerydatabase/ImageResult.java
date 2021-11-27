@@ -109,6 +109,7 @@ public class ImageResult extends AppCompatActivity implements NavInterface{
             }
         });
 
+        //Create toolbar and nav drawer
         Toolbar_Navigation tBarNav = new Toolbar_Navigation(this, this);
         tBarNav.CreateToolBar();
         tBarNav.CreateDrawer();
@@ -164,6 +165,7 @@ public class ImageResult extends AppCompatActivity implements NavInterface{
         }
     }
 
+    //Setters and getters for activity id
     public void setActivityId(int activityId){
         this.activityId = activityId;
     }

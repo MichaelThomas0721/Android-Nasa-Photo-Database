@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavInterface{
             }
         });
 
+        //Create toolbar and nav drawer
         Toolbar_Navigation tBarNav = new Toolbar_Navigation(this, this);
         tBarNav.CreateToolBar();
         tBarNav.CreateDrawer();
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavInterface{
         edit.apply();
     }
 
+    //Setter and getter for activityId
     public void setActivityId(int activityId){
         this.activityId = activityId;
     }
