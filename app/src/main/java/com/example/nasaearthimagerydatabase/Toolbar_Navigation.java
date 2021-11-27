@@ -41,7 +41,7 @@ public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelect
 
     public void CreateToolBar(){
 
-        //Get tool bar
+        //Get Tool bar
         tBar = (Toolbar) activity.findViewById(R.id.toolbar);
         tBar.inflateMenu(R.menu.navigation_menu);
         //Set menu listener
