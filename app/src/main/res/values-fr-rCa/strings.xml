@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">NASA earth imagery database</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="Longitude">Longitude</string>
+    <string name="Latitude">Latitude</string>
+    <string name="Search">Chercher</string>
+    <string name="VFavourites">Afficher les favoris</string>
+    <string name="NasaImageSearch">Recherche d\'images de la Nasa</string>
+    <string name="SearchResult">Résultat de la recherche</string>
+    <string name="ImageName">Nom de l\'image</string>
+    <string name="AddFavourite">Ajouter aux Favoris</string>
+    <string name="Delete">Effacer</string>
+    <string name="Name">Nom</string>
+    <string name="ToastResult">Afficher le résultat pour</string>
+    <string name="AddedFavourites">Ajouté aux favoris !</string>
+    <string name="Id">Id</string>
+    <string name="Details">Aléatoire:</string>
+    <string name="NasaDatabase">Base de données d\'imagerie terrestre de la NASA</string>
+    <string name="CreatedBy">Créé par Michael Thomas</string>
+    <string name="Main">Principal</string>
+    <string name="Favourites">Favoris</string>
+    <string name="ImageResult">Résultat de l\'image</string>
+    <string name="DetailsT">Aléatoire</string>
+    <string name="Help">Aide</string>
+    <string name="Date">Date: 2014-02-01</string>
+    <string name="NoImages">Pas des Image</string>
+
+    <string-array name="activites_names">
+        <item>Principal</item>
+        <item>Favoris</item>
+        <item>Résultat de l\'image</item>
+        <item>Aléatoire</item>
+    </string-array>
+    <string-array name="help_titles">
+        <item>Comment utiliser le </item>
+        <item> page.</item>
+    </string-array>
+    <string-array name="help_bodies">
+        <item>Entrez la longitude et la latitude dans les champs de saisie
+         puis appuyez sur le bouton de recherche pour afficher une image de cette longitude et latitude, ou appuyez sur
+            le bouton favoris
+         pour voir les images favorites</item>
+        <item>Sélectionnez l\'image dans la liste pour afficher l\'image et les détails, cliquez sur le bouton Supprimer pour
+            supprimez l\'image sélectionnée, cliquez sur le bouton retour android pour revenir à la page principale</item>
+        <item>Entrez un nom dans la zone de saisie et sélectionnez le bouton favori pour ajouter l\'image à
+            vos favoris, appuyez sur le bouton de retour Android pour revenir à la page principale</item>
+        <item>Cette page affiche une image aléatoire de vos favoris. Appuyez sur le bouton de retour
+            Android pour revenir à l\'activité précédente</item>
+    </string-array>
+</resources>

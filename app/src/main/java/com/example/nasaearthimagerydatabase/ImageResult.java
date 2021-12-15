@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -28,7 +29,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 
-public class ImageResult extends AppCompatActivity{
+public class ImageResult extends AppCompatActivity implements NavInterface{
 
     /*
     This activity is used to display the search result of the main activity.
@@ -50,6 +51,7 @@ public class ImageResult extends AppCompatActivity{
     String lon;
     String lat;
     Bitmap imageMap;
+    int activityId = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +77,8 @@ public class ImageResult extends AppCompatActivity{
         }
 
         //Create and show toast with the latitude and longitude of the search result
-        Toast toast = Toast.makeText(getApplicationContext(), "Showing result for " + lon + ", " + lat, Toast.LENGTH_SHORT);
+        Resources res = getResources();
+        Toast toast = Toast.makeText(getApplicationContext(), res.getString(R.string.ToastResult) + " " + lon + ", " + lat + ", " + res.getString(R.string.Date), Toast.LENGTH_SHORT);
         toast.show();
 
         //Find button
@@ -100,23 +103,16 @@ public class ImageResult extends AppCompatActivity{
                     long newId = db.insert(MyOpener.TABLE_NAME, null, newRowValues);
 
                     //Display snack bar notifying user that image has been added to database.
-                    Snackbar snackbar = Snackbar.make(v, "Added to favourites!", Snackbar.LENGTH_SHORT);
+                    Snackbar snackbar = Snackbar.make(v, R.string.AddedFavourites, Snackbar.LENGTH_SHORT);
                     snackbar.show();
                 }
             }
         });
 
-        //Button used to display help on how to use activity
-        Button helpButton = (Button) findViewById(R.id.resultHelpButton);
-        helpButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ImageResult.this);
-                alertDialogBuilder.setTitle("How to use result page").setMessage("Enter a name into the input box and select the favourite button" +
-                        " to add the image to your favourites, hit the android back button to return to the main page")
-                        .setNegativeButton("Ok", (click, arg) -> { } ).create().show();
-            }
-        });
+        //Create toolbar and nav drawer
+        Toolbar_Navigation tBarNav = new Toolbar_Navigation(this, this);
+        tBarNav.CreateToolBar();
+        tBarNav.CreateDrawer();
     }
 
     //Get and set image view
@@ -167,5 +163,14 @@ public class ImageResult extends AppCompatActivity{
         protected void onPostExecute(Void e){
             updateImage(bMap);
         }
+    }
+
+    //Setters and getters for activity id
+    public void setActivityId(int activityId){
+        this.activityId = activityId;
+    }
+
+    public int getActivityId(){
+        return activityId;
     }
 }

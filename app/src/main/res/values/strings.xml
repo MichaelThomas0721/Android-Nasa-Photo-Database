@@ -1,5 +1,52 @@
 <resources>
     <string name="app_name">NASA earth imagery database</string>
     <string name="navigation_drawer_open">Open</string>
-    <string name="navigation_drawer_close">close</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="Longitude">Longitude</string>
+    <string name="Latitude">Latitude</string>
+    <string name="Search">Search</string>
+    <string name="VFavourites">View Favourites</string>
+    <string name="NasaImageSearch">Nasa Image Search</string>
+    <string name="SearchResult">Search Result</string>
+    <string name="ImageName">Image Name</string>
+    <string name="AddFavourite">Add To Favourites</string>
+    <string name="Delete">Delete</string>
+    <string name="Name">Name</string>
+    <string name="ToastResult">Show result for</string>
+    <string name="AddedFavourites">Added To Favourites!</string>
+    <string name="Id">Id</string>
+    <string name="Details">Random Image:</string>
+    <string name="NasaDatabase">Nasa Earth Imagery Database</string>
+    <string name="CreatedBy">Created By Michael Thomas</string>
+    <string name="Main">Main</string>
+    <string name="Favourites">Favourites</string>
+    <string name="ImageResult">Image Result</string>
+    <string name="DetailsT">Random Image</string>
+    <string name="Help">Help</string>
+    <string name="Date">Date: 2014-02-01</string>
+    <string name="NoImages">No Images</string>
+
+
+    <string-array name="activites_names">
+        <item>Main</item>
+        <item>Favourites</item>
+        <item>Image Result</item>
+        <item>Random</item>
+    </string-array>
+    <string-array name="help_titles">
+        <item>How to use the </item>
+        <item> page.</item>
+    </string-array>
+    <string-array name="help_bodies">
+        <item>Enter the longitude and latitude into the input boxes
+         then press the search button to display and image of that longitude and latitude, Or press
+            the favourites button
+         to view favourited images</item>
+        <item>Select the image from the list to view image and details, click the delete button to
+            delete the selected image, click the android back button to return to the main page</item>
+        <item>Enter a name into the input box and select the favourite button to add the image to
+            your favourites, hit the android back button to return to the main page</item>
+        <item>This page displays a random image from your favourites. Press the android back button
+            to return to the previous activity</item>
+    </string-array>
 </resources>

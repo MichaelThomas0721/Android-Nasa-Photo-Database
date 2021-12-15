@@ -3,6 +3,7 @@ package com.example.nasaearthimagerydatabase;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Favourites extends AppCompatActivity {
+public class Favourites extends AppCompatActivity implements NavInterface{
 
     /*
     This activity is used to display the database of favourite images
@@ -39,9 +40,10 @@ public class Favourites extends AppCompatActivity {
     //Create variables
     private ArrayList<Image> images = new ArrayList<>();
     SQLiteDatabase db;
-    MyListAdapter myAdapter;
     DetailsFragment dFragment;
     Favourites favourites;
+    int activityId = 1;
+    MyListAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +54,6 @@ public class Favourites extends AppCompatActivity {
         ListView myList = findViewById(R.id.favouriteList);
         myList.setAdapter( myAdapter = new MyListAdapter());
 
-        //Load database
-        loadDataFromDatabase();
-
         //Set activity to this activity
         favourites = this;
 
@@ -63,22 +62,15 @@ public class Favourites extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     dFragment = new DetailsFragment();
-                    dFragment.importData(images.get(position), favourites, position);
+                    dFragment.importData(images.get(position), favourites, position, images, favourites);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentLocation, dFragment).commit();
             }
         });
 
-        //Alet button used to display how to use activity
-        Button helpButton = (Button) findViewById(R.id.favouriteHelpButton);
-        helpButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Favourites.this);
-                alertDialogBuilder.setTitle("How to use favourites page").setMessage("Select the image from the list to view image" +
-                        " and details, click the delete button to delete the selected image, click the android back button to return to the main page")
-                        .setNegativeButton("Ok", (click, arg) -> { } ).create().show();
-            }
-        });
+        //Create toolbar and nav drawer
+        Toolbar_Navigation tBarNav = new Toolbar_Navigation(this, this);
+        tBarNav.CreateToolBar();
+        tBarNav.CreateDrawer();
     }
 
     //Adapter for list
@@ -115,50 +107,34 @@ public class Favourites extends AppCompatActivity {
             TextView textName = newView.findViewById(R.id.fListName);
 
             //Set text for layout elements
-            textId.setText("Id: " + String.valueOf(images.get(position).imageId));
-            textName.setText("Name: " + images.get(position).imageName);
+            Resources res = getResources();
+            textId.setText(res.getText(R.string.Id) + ": " + String.valueOf(images.get(position).imageId));
+            textName.setText(res.getText(R.string.Name) + ": " + images.get(position).imageName);
 
             return newView;
         }
     }
 
-    private void loadDataFromDatabase(){
-        //Get database
-        MyOpener dbOpener = new MyOpener(this);
-        db = dbOpener.getWritableDatabase();
-
-        //IGNORE: FUNCTIONS USED FOR TESTING
-        //dbOpener.deleteDatabase((db));
-        //dbOpener.onCreate(db);
-
-        //Get results of query
-        String[] columns = {dbOpener.imageId, dbOpener.imageName, dbOpener.longitude, dbOpener.latitude, dbOpener.bitmapArray};
-        Cursor results = db.query(false, dbOpener.TABLE_NAME, columns, null, null, null, null, null, null);
-
-        //Get data from results
-        int imageIdIndex = results.getColumnIndex(MyOpener.imageId);
-        int imageNameIndex = results.getColumnIndex(MyOpener.imageName);
-        int longitudeIndex = results.getColumnIndex(MyOpener.longitude);
-        int latitudeIndex = results.getColumnIndex(MyOpener.latitude);
-        int bitmapArrayIndex = results.getColumnIndex(MyOpener.bitmapArray);
-
-        //Set the data
-        while(results.moveToNext()){
-            int imageId = results.getInt(imageIdIndex);
-            String imageName = results.getString(imageNameIndex);
-            String longitude = results.getString(longitudeIndex);
-            String latitude = results.getString(latitudeIndex);
-            //Decode and set image as bitmap
-            byte[] bitmapArray = results.getBlob(bitmapArrayIndex);
-            images.add(new Image(imageName, imageId, longitude, latitude, bitmapArray));
-        }
-    }
-
     //Used for deleting an image from database
-    public void deleteImage(Image im,int position){
-        db.delete(MyOpener.TABLE_NAME, MyOpener.imageId + " = ?", new String[] {Integer.toString(im.imageId)});
-        images.remove(position);
+    public void deleteImage() {
         myAdapter.notifyDataSetChanged();
     }
 
+    //Setter and getter for activityId
+    public void setActivityId(int activityId){
+        this.activityId = activityId;
+    }
+
+    public int getActivityId(){
+        return activityId;
+    }
+
+    //Update in case changes happened while not open also when first opened
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DatabaseControl dbControl = new DatabaseControl();
+        images = dbControl.loadDataFromDatabase(this);
+        myAdapter.notifyDataSetChanged();
+    }
 }
