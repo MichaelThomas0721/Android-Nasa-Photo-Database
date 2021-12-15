@@ -15,22 +15,23 @@
     <string name="ToastResult">Show result for</string>
     <string name="AddedFavourites">Added To Favourites!</string>
     <string name="Id">Id</string>
-    <string name="Details">Details:</string>
+    <string name="Details">Random Image:</string>
     <string name="NasaDatabase">Nasa Earth Imagery Database</string>
     <string name="CreatedBy">Created By Michael Thomas</string>
     <string name="Main">Main</string>
     <string name="Favourites">Favourites</string>
     <string name="ImageResult">Image Result</string>
-    <string name="DetailsT">Details</string>
+    <string name="DetailsT">Random Image</string>
     <string name="Help">Help</string>
     <string name="Date">Date: 2014-02-01</string>
+    <string name="NoImages">No Images</string>
 
 
     <string-array name="activites_names">
         <item>Main</item>
         <item>Favourites</item>
         <item>Image Result</item>
-        <item>Details</item>
+        <item>Random</item>
     </string-array>
     <string-array name="help_titles">
         <item>How to use the </item>
@@ -45,6 +46,7 @@
             delete the selected image, click the android back button to return to the main page</item>
         <item>Enter a name into the input box and select the favourite button to add the image to
             your favourites, hit the android back button to return to the main page</item>
-        <item>Press the android back button to return to the previous activity</item>
+        <item>This page displays a random image from your favourites. Press the android back button
+            to return to the previous activity</item>
     </string-array>
 </resources>

@@ -19,6 +19,11 @@ import com.google.android.material.navigation.NavigationView;
 
 public class Toolbar_Navigation implements NavigationView.OnNavigationItemSelectedListener{
 
+    /*
+    The Toolbar_Navigation class is used to make the toolbar and navbar universally work with all of
+    the classes without having to have duplicate code in any of the layout classes.
+     */
+
     //Create variables
     Toolbar tBar;
     DrawerLayout drawer;

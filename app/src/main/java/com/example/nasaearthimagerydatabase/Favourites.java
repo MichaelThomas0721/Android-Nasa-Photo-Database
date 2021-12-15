@@ -40,10 +40,10 @@ public class Favourites extends AppCompatActivity implements NavInterface{
     //Create variables
     private ArrayList<Image> images = new ArrayList<>();
     SQLiteDatabase db;
-    MyListAdapter myAdapter;
     DetailsFragment dFragment;
     Favourites favourites;
     int activityId = 1;
+    MyListAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,8 @@ public class Favourites extends AppCompatActivity implements NavInterface{
         myList.setAdapter( myAdapter = new MyListAdapter());
 
         //Load database
-        loadDataFromDatabase();
+        //DatabaseControl dbControl = new DatabaseControl();
+        //images = dbControl.loadDataFromDatabase(this);
 
         //Set activity to this activity
         favourites = this;
@@ -65,7 +66,7 @@ public class Favourites extends AppCompatActivity implements NavInterface{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     dFragment = new DetailsFragment();
-                    dFragment.importData(images.get(position), favourites, position);
+                    dFragment.importData(images.get(position), favourites, position, images, favourites);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentLocation, dFragment).commit();
             }
         });
@@ -118,42 +119,8 @@ public class Favourites extends AppCompatActivity implements NavInterface{
         }
     }
 
-    private void loadDataFromDatabase(){
-        //Get database
-        MyOpener dbOpener = new MyOpener(this);
-        db = dbOpener.getWritableDatabase();
-
-        //IGNORE: FUNCTIONS USED FOR TESTING
-        //dbOpener.deleteDatabase((db));
-        //dbOpener.onCreate(db);
-
-        //Get results of query
-        String[] columns = {dbOpener.imageId, dbOpener.imageName, dbOpener.longitude, dbOpener.latitude, dbOpener.bitmapArray};
-        Cursor results = db.query(false, dbOpener.TABLE_NAME, columns, null, null, null, null, null, null);
-
-        //Get data from results
-        int imageIdIndex = results.getColumnIndex(MyOpener.imageId);
-        int imageNameIndex = results.getColumnIndex(MyOpener.imageName);
-        int longitudeIndex = results.getColumnIndex(MyOpener.longitude);
-        int latitudeIndex = results.getColumnIndex(MyOpener.latitude);
-        int bitmapArrayIndex = results.getColumnIndex(MyOpener.bitmapArray);
-
-        //Set the data
-        while(results.moveToNext()){
-            int imageId = results.getInt(imageIdIndex);
-            String imageName = results.getString(imageNameIndex);
-            String longitude = results.getString(longitudeIndex);
-            String latitude = results.getString(latitudeIndex);
-            //Decode and set image as bitmap
-            byte[] bitmapArray = results.getBlob(bitmapArrayIndex);
-            images.add(new Image(imageName, imageId, longitude, latitude, bitmapArray));
-        }
-    }
-
     //Used for deleting an image from database
-    public void deleteImage(Image im,int position){
-        db.delete(MyOpener.TABLE_NAME, MyOpener.imageId + " = ?", new String[] {Integer.toString(im.imageId)});
-        images.remove(position);
+    public void deleteImage() {
         myAdapter.notifyDataSetChanged();
     }
 
@@ -166,4 +133,11 @@ public class Favourites extends AppCompatActivity implements NavInterface{
         return activityId;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DatabaseControl dbControl = new DatabaseControl();
+        images = dbControl.loadDataFromDatabase(this);
+        myAdapter.notifyDataSetChanged();
+    }
 }

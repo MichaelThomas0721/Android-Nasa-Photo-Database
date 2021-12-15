@@ -20,6 +20,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class DetailsFragment extends Fragment {
 
     /*
@@ -43,6 +45,8 @@ public class DetailsFragment extends Fragment {
     private String longitude;
     private String latitude;
     private int position;
+    private ArrayList<Image> images = new ArrayList<Image>();
+    private Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,7 +71,12 @@ public class DetailsFragment extends Fragment {
             //Delete from database
             db.delete(MyOpener.TABLE_NAME, MyOpener.imageId + " = ?", new String[] {Integer.toString(image.imageId)});
             //Delete from and update list
-            favourites.deleteImage(image, position);
+            DatabaseControl dbControl = new DatabaseControl();
+            dbControl.deleteImage(image, position, images, context);
+            if (favourites != null)
+            {
+                favourites.deleteImage();
+            }
             parentActivity.getSupportFragmentManager().beginTransaction().remove(this).commit();
         });
 
@@ -84,13 +93,25 @@ public class DetailsFragment extends Fragment {
     }
 
     //Import data passed in from activity
-    public void importData(Image image, Favourites favourites, int position) {
+    public void importData(Image image, Favourites favourites, int position, ArrayList<Image> images, Context context) {
         this.image = image;
         this.favourites = favourites;
         this.bitmapArray = image.bitmapArray;
         this.longitude = image.longitude;
         this.latitude = image.latitude;
         this.position = position;
+        this.images = images;
+        this.context = context;
+    }
+
+    public void importData(Image image, int position, ArrayList<Image> images, Context context) {
+        this.image = image;
+        this.bitmapArray = image.bitmapArray;
+        this.longitude = image.longitude;
+        this.latitude = image.latitude;
+        this.position = position;
+        this.images = images;
+        this.context = context;
     }
 
     //Set data on the fragment
