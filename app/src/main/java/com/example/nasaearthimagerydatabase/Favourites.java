@@ -54,10 +54,6 @@ public class Favourites extends AppCompatActivity implements NavInterface{
         ListView myList = findViewById(R.id.favouriteList);
         myList.setAdapter( myAdapter = new MyListAdapter());
 
-        //Load database
-        //DatabaseControl dbControl = new DatabaseControl();
-        //images = dbControl.loadDataFromDatabase(this);
-
         //Set activity to this activity
         favourites = this;
 
@@ -133,6 +129,7 @@ public class Favourites extends AppCompatActivity implements NavInterface{
         return activityId;
     }
 
+    //Update in case changes happened while not open also when first opened
     @Override
     protected void onResume() {
         super.onResume();

@@ -70,7 +70,7 @@ public class DetailsFragment extends Fragment {
         deleteButton.setOnClickListener(clk -> {
             //Delete from database
             db.delete(MyOpener.TABLE_NAME, MyOpener.imageId + " = ?", new String[] {Integer.toString(image.imageId)});
-            //Delete from and update list
+            //Delete from and update list based on what activity it came from
             DatabaseControl dbControl = new DatabaseControl();
             dbControl.deleteImage(image, position, images, context);
             if (favourites != null)
@@ -104,6 +104,7 @@ public class DetailsFragment extends Fragment {
         this.context = context;
     }
 
+    //Same but without the favourites because no list to be updated
     public void importData(Image image, int position, ArrayList<Image> images, Context context) {
         this.image = image;
         this.bitmapArray = image.bitmapArray;

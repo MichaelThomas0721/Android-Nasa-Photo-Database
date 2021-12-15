@@ -20,6 +20,7 @@ public class Details extends AppCompatActivity implements NavInterface {
         This is 4 of 4 activies in this app.
      */
 
+    //Variables
     int activityId = 3;
     DetailsFragment dFragment;
     private ArrayList<Image> images = new ArrayList<>();
@@ -31,6 +32,7 @@ public class Details extends AppCompatActivity implements NavInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+        //Set the fragment and title based on the database of images
         DatabaseControl dbControl = new DatabaseControl();
         images = dbControl.loadDataFromDatabase(this);
         TextView title = (TextView) findViewById(R.id.textView);
@@ -59,37 +61,5 @@ public class Details extends AppCompatActivity implements NavInterface {
     @Override
     public int getActivityId() {
         return activityId;
-    }
-
-    private void loadDataFromDatabase(){
-        //Get database
-        MyOpener dbOpener = new MyOpener(this);
-        db = dbOpener.getWritableDatabase();
-
-        //IGNORE: FUNCTIONS USED FOR TESTING
-        //dbOpener.deleteDatabase((db));
-        //dbOpener.onCreate(db);
-
-        //Get results of query
-        String[] columns = {dbOpener.imageId, dbOpener.imageName, dbOpener.longitude, dbOpener.latitude, dbOpener.bitmapArray};
-        Cursor results = db.query(false, dbOpener.TABLE_NAME, columns, null, null, null, null, null, null);
-
-        //Get data from results
-        int imageIdIndex = results.getColumnIndex(MyOpener.imageId);
-        int imageNameIndex = results.getColumnIndex(MyOpener.imageName);
-        int longitudeIndex = results.getColumnIndex(MyOpener.longitude);
-        int latitudeIndex = results.getColumnIndex(MyOpener.latitude);
-        int bitmapArrayIndex = results.getColumnIndex(MyOpener.bitmapArray);
-
-        //Set the data
-        while(results.moveToNext()){
-            int imageId = results.getInt(imageIdIndex);
-            String imageName = results.getString(imageNameIndex);
-            String longitude = results.getString(longitudeIndex);
-            String latitude = results.getString(latitudeIndex);
-            //Decode and set image as bitmap
-            byte[] bitmapArray = results.getBlob(bitmapArrayIndex);
-            images.add(new Image(imageName, imageId, longitude, latitude, bitmapArray));
-        }
     }
 }

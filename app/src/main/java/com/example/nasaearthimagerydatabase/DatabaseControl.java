@@ -8,6 +8,11 @@ import java.util.ArrayList;
 
 public class DatabaseControl {
 
+    /*
+    This class is used to reduce duplicate code from using the same database methods in mulitple activites
+     */
+
+    //Create variables
     MyOpener dbOpener;
     SQLiteDatabase db;
 
@@ -46,6 +51,7 @@ public class DatabaseControl {
         return images;
     }
 
+    //Used to delete image from database and list if needed
     public ArrayList<Image> deleteImage(Image im,int position, ArrayList<Image> images, Context context){
         dbOpener = new MyOpener(context);
         db = dbOpener.getWritableDatabase();
